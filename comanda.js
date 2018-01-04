@@ -7,4 +7,15 @@ function submit() {
     sessionStorage.setItem("idComanda","1")
 }
 
+function updateTotal() {
+    var total = 0;
+    total += document.getElementById("copii").value * 5;
+    total += document.getElementById("elevi").value * 7;
+    total += document.getElementById("studenti").value * 8;
+    total += document.getElementById("adulti").value * 10;
+    document.getElementById("total").innerHTML = total;
+}
+
 document.getElementById("submit").addEventListener("click",submit);
+document.addEventListener("click",updateTotal);
+document.addEventListener("keypress",updateTotal);
