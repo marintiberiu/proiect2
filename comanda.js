@@ -1,16 +1,24 @@
 function submit() {
-    requestRezervare.open("GET", "http://localhost:3000/idRezervare", true);
+    console.log(requestRezervare);
     requestRezervare.send();
+    console.log(requestRezervare);
 }
 
 function salvareRequest() {
-    sessionStorage.setItem("nume",document.getElementById("nume").value);
-    sessionStorage.setItem("nrCopii",document.getElementById("copii").value);
-    sessionStorage.setItem("nrElevi",document.getElementById("elevi").value);
-    sessionStorage.setItem("nrStudenti",document.getElementById("studenti").value);
-    sessionStorage.setItem("nrAdulti",document.getElementById("adulti").value);
-    sessionStorage.setItem("statusComanda","finalizata");
-    sessionStorage.setItem("idComanda",requestRezervare.response.id);
+    console.log(requestRezervare);
+    if (requestRezervare.readyState === XMLHttpRequest.DONE)
+    {
+        sessionStorage.setItem("nume",document.getElementById("nume").value);
+        sessionStorage.setItem("nrCopii",document.getElementById("copii").value);
+        sessionStorage.setItem("nrElevi",document.getElementById("elevi").value);
+        sessionStorage.setItem("nrStudenti",document.getElementById("studenti").value);
+        sessionStorage.setItem("nrAdulti",document.getElementById("adulti").value);
+        sessionStorage.setItem("data",document.getElementById("data").value);
+        sessionStorage.setItem("statusComanda","finalizata");
+        console.log(requestRezervare);
+        sessionStorage.setItem("idComanda",requestRezervare.response.id);
+        location.replace("bilete.html");
+    }
 }
 
 function updateTotal() {
@@ -30,5 +38,6 @@ document.getElementById("submit").onclick=submit;
 document.addEventListener("click",updateTotal);
 document.addEventListener("keypress",updateTotal);
 var requestRezervare = new XMLHttpRequest();
+requestRezervare.open("GET", "http://httpbin.org/get?id=12345", true);
 requestRezervare.onreadystatechange = salvareRequest;
 
