@@ -8,7 +8,7 @@ if (statusComanda === null) {
 if (statusComanda == "initial") {
     butonComanda = document.createElement("a");
     butonComanda.href = "comanda.html";
-    butonComanda.innerHTML = "Creare comanda";  
+    butonComanda.innerHTML = "Rezervare tur";  
     butonComanda.classList.add("comanda");
     comanda.appendChild(butonComanda);
 } else {

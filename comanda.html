@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Comanda</title>
+    <title>Rezervare</title>
 </head>
 <body>
     <form>
-        Comanda: <br>
-        Copii: <input type="number" id="copii" value="0"> <br>
-        Elevi: <input type="number" id="elevi" value="0"> <br>
-        Studenti: <input type="number" id="studenti" value="0"> <br>
-        Adulti: <input type="number" id="adulti" value="0"> <br>
+        Rezervare: <br>
+        Nume: <input type="text" id="nume"> <br>
+        Copii: <input type="number" id="copii" min="0" value="0"> <br>
+        Elevi: <input type="number" id="elevi" min="0" value="0"> <br>
+        Studenti: <input type="number" id="studenti" min="0" value="0"> <br>
+        Adulti: <input type="number" id="adulti" min="0" value="0"> <br>
+        Data: <input type="date" id="data"> <br>
         Pret total: <span id="total"></span><br>
         <input type="submit" value="Submit" id="submit">
     </form>
