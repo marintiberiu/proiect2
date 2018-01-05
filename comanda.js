@@ -1,11 +1,9 @@
 function submit() {
-    console.log(requestRezervare);
     requestRezervare.send();
-    console.log(requestRezervare);
+    salvareRequest();
 }
 
 function salvareRequest() {
-    console.log(requestRezervare);
     if (requestRezervare.readyState === XMLHttpRequest.DONE)
     {
         sessionStorage.setItem("nume",document.getElementById("nume").value);
@@ -16,8 +14,8 @@ function salvareRequest() {
         sessionStorage.setItem("data",document.getElementById("data").value);
         sessionStorage.setItem("statusComanda","finalizata");
         console.log(requestRezervare);
-        sessionStorage.setItem("idComanda",requestRezervare.response.id);
-        location.replace("bilete.html");
+        sessionStorage.setItem("idComanda",requestRezervare.response);
+        window.location.replace("bilete.html");
     }
 }
 
@@ -38,6 +36,5 @@ document.getElementById("submit").onclick=submit;
 document.addEventListener("click",updateTotal);
 document.addEventListener("keypress",updateTotal);
 var requestRezervare = new XMLHttpRequest();
-requestRezervare.open("GET", "http://httpbin.org/get?id=12345", true);
+requestRezervare.open("GET", "https://marintiberiu.github.io/proiect2/id.txt", false);
 requestRezervare.onreadystatechange = salvareRequest;
-
