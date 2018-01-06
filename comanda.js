@@ -1,20 +1,28 @@
 function submit() {
-    requestRezervare.send();
-    salvareRequest();
+    document.getElementById("submit").disabled = true;
+    str = "";
+    sessionStorage.setItem("nume",document.getElementById("nume").value);
+    str += ',' + document.getElementById("nume").value;
+    sessionStorage.setItem("nrCopii",document.getElementById("copii").value);
+    str += ',' + document.getElementById("copii").value;
+    sessionStorage.setItem("nrElevi",document.getElementById("elevi").value);
+    str += ',' + document.getElementById("elevi").value;
+    sessionStorage.setItem("nrStudenti",document.getElementById("studenti").value);
+    str += ',' + document.getElementById("studenti").value;
+    sessionStorage.setItem("nrAdulti",document.getElementById("adulti").value);
+    str += ',' + document.getElementById("adulti").value;
+    sessionStorage.setItem("data",document.getElementById("data").value);
+    str += ',' + document.getElementById("data").value;
+    sessionStorage.setItem("total",document.getElementById("total").innerHTML);
+    str += ',' + document.getElementById("total").value;
+    requestRezervare.send(str);
 }
 
-function salvareRequest() {
+function getId() {
     if (requestRezervare.readyState === XMLHttpRequest.DONE)
     {
-        sessionStorage.setItem("nume",document.getElementById("nume").value);
-        sessionStorage.setItem("nrCopii",document.getElementById("copii").value);
-        sessionStorage.setItem("nrElevi",document.getElementById("elevi").value);
-        sessionStorage.setItem("nrStudenti",document.getElementById("studenti").value);
-        sessionStorage.setItem("nrAdulti",document.getElementById("adulti").value);
-        sessionStorage.setItem("data",document.getElementById("data").value);
         sessionStorage.setItem("statusComanda","finalizata");
-        console.log(requestRezervare);
-        sessionStorage.setItem("idComanda",requestRezervare.response);
+        sessionStorage.setItem("idComanda",requestRezervare.response.args.id);
         window.location.replace("bilete.html");
     }
 }
@@ -30,11 +38,10 @@ function updateTotal() {
 
 updateTotal();
 today = new Date();
-document.getElementById("data").value = today.getFullYear() + '-' + today.getMonth()+1 + '-' + today.getDate();
-document.getElementById("data").min = today.getFullYear() + '-' + today.getMonth()+1 + '-' + today.getDate();
 document.getElementById("submit").onclick=submit;
 document.addEventListener("click",updateTotal);
 document.addEventListener("keypress",updateTotal);
 var requestRezervare = new XMLHttpRequest();
-requestRezervare.open("GET", "https://marintiberiu.github.io/proiect2/id.txt", false);
-requestRezervare.onreadystatechange = salvareRequest;
+requestRezervare.open("POST", "https://httpbin.org/post?id=12345", true);
+requestRezervare.responseType = "json";
+requestRezervare.onreadystatechange = getId;

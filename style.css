@@ -212,10 +212,15 @@ a {
     margin: auto;
 }
 
-.comanda {
+.comanda-link {
     font-size: 2rem;
     margin-left: 20px;
     color: blue;
+}
+
+.comanda-end {
+    font-size: 2rem;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 780px) {
