@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <title>Rezervare</title>
 </head>
-<body>
-    <form>
-        Rezervare: <br>
+<body class="comanda-body">
+    <div class="comanda-titlu">Rezervare tur:</div>
+    <form class="form-comanda">
         Nume: <input type="text" id="nume"> <br>
         Copii: <input type="number" id="copii" min="0" value="0"> <br>
         Elevi: <input type="number" id="elevi" min="0" value="0"> <br>
         Studenti: <input type="number" id="studenti" min="0" value="0"> <br>
         Adulti: <input type="number" id="adulti" min="0" value="0"> <br>
-        Data: <input type="date" id="data"> <br>
+        Data: <span id="input-data"><input type="date" id="data"></span><br>
         Pret total: <span id="total"></span><br>
         <input type="reset" value="Submit" id="submit">
     </form>
