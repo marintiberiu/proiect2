@@ -42,6 +42,8 @@ function modificare() {
     document.getElementById("anulare").disabled = true;
     input = document.createElement("input");
     input.type = "date";
+    input.value = document.getElementById("data").innerHTML;
+    input.min = document.getElementById("data").innerHTML;
     buton = document.createElement("button");
     buton.innerHTML = "Submit";
     buton.id = "buton";
